@@ -1,4 +1,8 @@
 // DOM Elements
+const entranceYesBtn = document.getElementById('entranceYesBtn');
+const entranceNoBtn = document.getElementById('entranceNoBtn');
+const entranceScreen = document.getElementById('entrance-screen');
+
 const noBtn = document.getElementById('noBtn');
 const yesBtn = document.getElementById('yesBtn');
 const mainCard = document.getElementById('mainCard');
@@ -10,7 +14,25 @@ const bgBlossoms = document.getElementById('bgBlossoms');
 // RENAME "your-image.png" TO YOUR ACTUAL IMAGE FILENAME (e.g. "photo.jpg")
 const pathToCustomImage = "profile.jpg"; 
 
-// Create background elements (Hearts or Images)
+// --- Entrance Screen Logic ---
+
+if (entranceYesBtn) {
+    entranceYesBtn.addEventListener('click', () => {
+        // Remove neutral mode to reveal the valentine theme
+        document.body.classList.remove('neutral-mode');
+        
+        // Hide entrance screen
+        if (entranceScreen) {
+            entranceScreen.style.display = 'none';
+        }
+
+        // The CSS rule "body.neutral-mode ..." no longer applies, 
+        // so #bgHearts, #bgBlossoms, #mainCard become visible automatically.
+    });
+}
+
+// --- Background Elements (Hearts / Blossoms) ---
+
 function createHearts() {
     if (!bgHearts) return;
     
@@ -50,7 +72,6 @@ function createHearts() {
 }
 createHearts();
 
-// Create falling cherry blossoms
 function createBlossoms() {
     if (!bgBlossoms) return;
 
@@ -72,23 +93,32 @@ function createBlossoms() {
 }
 createBlossoms();
 
-// No Button Interaction
-function moveButton() {
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+// --- "No" Button Interaction (Runs Away) ---
+
+function moveButton(btn) {
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight);
     
-    noBtn.style.position = 'fixed'; // Change to fixed to allow free movement
-    noBtn.classList.add('moving');
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
+    btn.style.position = 'fixed'; // Change to fixed to allow free movement
+    btn.classList.add('moving');
+    btn.style.left = `${x}px`;
+    btn.style.top = `${y}px`;
 }
 
+// Attach to Main No Button
 if (noBtn) {
-    noBtn.addEventListener('mouseover', moveButton);
-    noBtn.addEventListener('touchstart', moveButton); // For mobile
+    noBtn.addEventListener('mouseover', () => moveButton(noBtn));
+    noBtn.addEventListener('touchstart', () => moveButton(noBtn));
 }
 
-// Yes Button Interaction
+// Attach to Entrance No Button
+if (entranceNoBtn) {
+    entranceNoBtn.addEventListener('mouseover', () => moveButton(entranceNoBtn));
+    entranceNoBtn.addEventListener('touchstart', () => moveButton(entranceNoBtn));
+}
+
+// --- "Yes" Button Interaction (Success) ---
+
 if (yesBtn) {
     yesBtn.addEventListener('click', () => {
         // Trigger confetti
