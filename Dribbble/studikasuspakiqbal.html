@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>StudyCase</title>
+</head>
+<body>
+    <button onclick="Jalankan()">Tombol</button>
+    
+</body>
+<script>
+    function Jalankan() {
+        let running = true;
+        alert(`Selamat Datang Di PPLG X 3`)
+
+        while (running) {
+            let menu = prompt("Pilih Menu:\n1. Input Nama & Alamat\n2. Tinggalkan Komentar \n3. Keluar");
+
+            if (menu === "1") {
+                let nama = prompt("Masukkan Nama Anda:");
+                let alamat = prompt("Masukkan Alamat Anda:");
+                alert(`Nama: ${nama}\nAlamat: ${alamat}`);
+                
+            } else if (menu === "2") {
+                let komentar = prompt("Masukkan Komentar Anda:");
+                let hasil = sensorKata(komentar);
+                alert(`Komentar Anda: ${hasil}`);
+                
+            } else if (menu === "3") {
+                alert("Terima kasih Sudah Berkunjung!");
+                running = false;
+            } else {
+                alert("Input Tidak Valid!!");
+            }
+        }
+    }
+
+    function sensorKata(teks) {
+        let kataKotor = ["kasar", "bodoh", "jelek", "tolol", "bego", "goblok", "malas"]; 
+        
+        let kata = teks.split(" ");
+        for (let i = 0; i < kata.length; i++) {
+            if (kataKotor.includes(kata[i].toLowerCase())) {
+                kata[i] = "*****";
+            }
+        }
+        return kata.join(" ");
+    }
+</script>
+</html>

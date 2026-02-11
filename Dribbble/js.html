@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //let datasiswa = []
+        //let jumlah = Number(prompt(`Masukkan Jumlah Siswa`));
+        //for (let a= 0; a < jumlah; a++) {
+            //let nama = prompt(`Masukkan Nama ` );
+            //let kelas = prompt(`Masukkan Kelas ` );
+            //let nilai = Number(prompt(`Masukkan Nilai `));
+
+            // let siswa = {
+            //nama : nama,
+            //kelas : kelas,
+            //nilai : nilai,
+            
+
+            //get info() {
+            //    return `nama : ${this.nama}, kelas: ${this.kelas}, `
+           // },
+       // get lulus() {
+          //  return `nama : ${this.name}, kelas : ${this.kelas}`
+        //},
+
+        //get grade() {
+           // if (this.nilai >= 90) {
+           //     return "A"
+           // } else if (this.nilai >= 80) {
+            //    return "B"
+            //} else if (this.nilai >= 70) {
+            //    return "C"
+           //} else {
+           //     return "D"
+           // }
+        //},
+        
+    //};
+    //datasiswa.push(siswa);
+//};
+    
+//let hasil = "Data Siswa";
+//datasiswa.forEach(siswa => {
+    //hasil += 
+//`Nama Siswa : ${siswa.nama}\n`+
+//`Kelas Siswa : ${siswa.kelas}\n`+
+//`Nilai Siswa : ${siswa.nilai}\n`+
+//`Grade Siswa : ${siswa.grade}\n`+
+//`Status : ${siswa.lulus}\n`+
+//"-----------------------------\n";
+//});
+
+//alert(hasil);
+
+
+
+
+let nama = prompt(`Masukkan Nama`);
+let kelas = prompt(`Masukkan Kelas`);
+let nilai = Number(prompt(`Masukkan Nilai`));
+
+let siswa = {
+    nama : nama,
+    kelas: kelas,
+    nilai: nilai,
+
+    get info () {
+        return this.nama, this.kelas
+    },
+
+    get lulus () {
+        return this.nilai >= 75 ? "lulus" : "tidak lulus"
+    },
+};
+alert (
+    `Nama : ${siswa.nama}\n` +
+    `Kelulusan: ${siswa.nilai}\n` +
+    `Nilai : ${siswa.lulus}`    
+)
+
+
+
+
+
+
+    
+
+
+     
+
+</script>
+</body>
+</html>

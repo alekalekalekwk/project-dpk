@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button onclick="cariLokasi()">Lokasi</button>
+    <p id="lokasi"></p>
+
+    <button onclick="koneksiInternet()">Cek Koneksi Internet</button>
+    <input type="text" id="text1">
+    <h1 id ="text2">TEXT UBAH WARNA</h1>
+    <button onclick="ubahWarna()">Ubah Warna</button>
+</body>
+<script>
+
+function cariLokasi() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(tampilkanPosisi);
+    } else {
+        document.getElementById("lokasi").innerHTML = "Geolocation tidak didukung browser ini.";
+    }
+}
+
+function tampilkanPosisi(position) {
+    let lokasi = document.getElementById("lokasi");
+    lokasi.innerHTML = "Latitude: " + position.coords.latitude + 
+                       "<br>Longitude: " + position.coords.longitude;
+}
+
+function koneksiInternet() {
+    if (navigator.onLine) {
+        cariLokasi();
+    } else {
+        alert("Maaf, tidak ada koneksi internet.");
+    }
+}
+
+function ubahWarna() {
+    if (text1.value == "hideung") {
+        text2.setAttribute("style", "color: black");
+    } else if(text1.value == "bodas") {
+        text2.setAttribute("style", "color: white");
+    } else if(text1.value == "beureum") {
+        text2.setAttribute("style", "color: red");
+    } else if(text1.value == "koneng") {
+        text2.setAttribute("style", "color: yellow");
+    } else if (text1.value == "biru") {
+        text2.setAttribute("style", "color: blue");
+    } else {
+        text2.setAttribute("style", "color: black");
+    }
+}
+
+
+
+//const width = window.innerWidth;
+
+//if (width > 992) {
+  //  alert("tampilan laptop");
+//} else if (width > 600) {
+  //  alert("Tampilan Tablet");
+//} else {
+  //  alert("Tampilan Mobile");
+//}
+
+
+</script>
+</html>

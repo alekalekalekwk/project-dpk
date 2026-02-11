@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<!-- 
+    <button onclick="Tombol()">Tombol</button>
+    <h1 id="JudulBaru">Judul Versi 1</h1>
+
+    <input type="text" id="InputTeks"> -->
+
+    <li><input type="text" id="InputNama"></li>
+    <li><input type="text" id="InputKelas"></li>
+    <li><input type="text" id="InputRayon"></li>
+    <button onclick="TombolNama()">Tombol</button>
+
+
+
+
+</head>
+<body>
+    <div id="HasilInput" style="margin-top: 20px; font-weight: bold;"></div>
+</body>
+<script>
+    function TombolNama() {
+        let nama = document.getElementById("InputNama").value;
+        let kelas = document.getElementById("InputKelas").value;
+        let rayon = document.getElementById("InputRayon").value;
+
+        if (nama === "" || kelas === "" || rayon === "") {
+            alert("Semua input harus diisi!");
+            document.getElementById("HasilInput").innerHTML = "";
+            return;
+        }
+
+        document.getElementById("HasilInput").innerHTML = 
+            `Nama: ${nama}<br>Kelas: ${kelas}<br>Rayon: ${rayon}`;
+    }
+
+
+
+
+
+
+
+
+
+
+    //function Tombol() {
+    //    alert("Hello World!");
+    //     document.getElementById("JudulBaru").innerHTML = "Judul Versi 2";
+
+    //     // manipulasi elemen html
+    //     document.body.innerHTML = "<h6>Sub Judul</h6>";
+
+    //}
+
+    //document.getElementById("InputTeks").value = "Prabu Alexandria Ardev";
+
+    //NO.1
+    function menitKejam() {
+
+        let menit = Number(prompt("Masukkan jumlah menit:"));
+    
+        let jam = Math.floor(menit / 60);
+        let sisamenit = menit % 60;
+    
+        alert(
+            `${menit} menit = ${jam} jam ${sisamenit} menit`
+        );
+    }
+    
+    //menitKejam();
+
+    //NO.2
+    function potongNama(nama) {
+        let words = nama.trim().split(' ');
+        
+        
+        if (words.length < 3) {
+            return nama;
+        }
+        
+        let hasil = words.slice(0, 2).join(' ');
+        
+        for (let i = 2; i < words.length; i++) {
+            hasil += ' ' + words[i][0].toUpperCase() + '.';
+        }
+        
+        return hasil;
+    }
+
+    //let inputNama = prompt("Masukkan nama lengkap:");
+    //let hasilPotong = potongNama(inputNama);
+    //alert(`Nama asli: ${inputNama}\nNama terpotong: ${hasilPotong}`);
+
+    //NO.3    
+    function censorKataNegatif(kalimat) {
+        
+        let kataNegatif = ["malas", "egois", "pelit", "jahat", "bodoh", "jelek", "goblok", "tolol"]
+        let words = kalimat.split(' ');
+        for (let i = 0; i < words.length; i++) {
+
+            if (kataNegatif.includes(words[i].toLowerCase())) {
+                words[i] = "***";
+            }
+        }
+        //return words.join(' ');
+    }
+
+    //let teks = prompt("Masukkan kalimat:");
+    //let hasilSensor = censorKataNegatif(teks);
+    //alert(`Teks Asli: ${teks}\nTeks Tersensor: ${hasilSensor}`);
+
+    //no.4
+    function cekNumber(number) {
+        //let number = Math.abs(number);
+        
+        if (number >= 1000) {
+            return "ribuan";
+        } else if (number >= 100) {
+            return "ratusan";
+        } else if (number >= 10) {
+            return "puluhan";
+        } else if (number >= 1) {
+            return "satuan";
+        } else {
+            return "nol";
+        }
+    }
+
+    //let angka = Number(prompt("Masukkan angka:"));
+    //let satuan = cekNumber(angka);
+    //alert(`Angka ${angka} termasuk dalam kategori: ${satuan}`);
+
+    //NO.5
+    function bagiTiga(angka) {
+        let hasil = Math.floor(angka / 3);
+        return hasil;
+    }
+
+    //let inputAngka = Number(prompt("Masukkan angka untuk dibagi 3:"));
+    //let hasilBagi = bagiTiga(inputAngka);
+    //alert(`${inputAngka} dibagi 3 = ${inputAngka / 3}\nHasil pembulatan: ${hasilBagi}`);
+
+    
+    //NO.6
+    function cekPembagi(angka) {
+        let pembagi = [];
+        
+        for (let i = 1; i <= 5; i++) {
+            if (angka % i === 0) {
+                pembagi.push(i);
+            }
+        }
+        
+        return pembagi.join(',');
+    }
+
+    //let angkaCek = Number(prompt("Masukkan angka untuk dicek pembaginya:"));
+    //let hasilPembagi = cekPembagi(angkaCek);
+    //alert(`${angkaCek} dapat dibagi dengan angka ${hasilPembagi}`);
+
+    //NO.7
+    function filterAngka(data) {
+        let hasil = data.filter(item => typeof item === 'number');
+        return hasil;
+    }
+
+    //let data = [80, 90, null, 76, "85", "kosong"];
+    //let dataFiltered = filterAngka(data);
+    //alert(`Data asli: [${data}]\nData setelah filter: [${dataFiltered}]`);
+
+
+    //NO.8
+    function cariKataTerSedikit(menu) {
+        let minWords = Infinity;
+        let itemTerSedikit = "";
+        
+        for (let item of menu) {
+            let jumlahKata = item.split(' ').length;
+            if (jumlahKata < minWords) {
+                minWords = jumlahKata;
+                itemTerSedikit = item;
+            }
+        }
+        
+        return {
+            jumlah: minWords,
+            item: itemTerSedikit
+        };
+    }
+
+    //let menu = ["Nasi Goreng", "Mie Goreng", "Mie Kuah", "Kwetiaw"];
+    //let hasil = cariKataTerSedikit(menu);
+    //alert(`Jumlah kata paling sedikit sejumlah ${hasil.jumlah} kata yaitu ${hasil.item}`);
+
+
+    //NO.9
+    function cariMenu(daftarMenu, menuDicari) {
+        if (daftarMenu.includes(menuDicari)) {
+            return `Menu yang anda pilih ${menuDicari}`;
+        } else {
+            return "Menu tidak tersedia";
+        }
+    }
+
+    //let menuList = ["Nasi Goreng", "Mie Goreng", "Mie Kuah", "Kwetiaw"];
+    //let pilihanMenu = prompt("Masukkan menu yang ingin dipilih:");
+    //let hasilCari = cariMenu(menuList, pilihanMenu);
+    //alert(hasilCari);
+
+    //NO.10
+    function top3Nilai(data) {
+        let sorted = data.sort((a, b) => b - a);
+        let top3 = sorted.slice(0, 3);
+        return top3;
+    
+    }   
+
+    //let nilai = [80, 76, 78, 82, 80, 91];
+    //let nilaiTeratas = top3Nilai(nilai);
+    //alert(`Nilai asli: [${nilai}]\n3 Nilai teratas: [${nilaiTeratas}]`);
+
+</script>
+</html>
+
+
