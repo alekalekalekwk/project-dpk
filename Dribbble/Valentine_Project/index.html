@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are you ready?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Override body style to be neutral */
+        body {
+            background: #f0f0f0 !important; /* Neutral gray */
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Override primary button style to be neutral */
+        .btn-yes {
+            background-color: #333 !important;
+            color: #fff !important;
+        }
+        .btn-yes:hover {
+            background-color: #000 !important;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2) !important;
+        }
+        /* Override 'No' button if needed, or keep it consistent */
+        .btn-no {
+            border-color: #333 !important;
+            color: #333 !important;
+        }
+        
+        h1 {
+            color: #333 !important; /* Neutral text color */
+            font-family: 'Poppins', sans-serif !important; /* Less playful font */
+            text-shadow: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" style="box-shadow: none; border: 1px solid #ddd;">
+        <h1>Are you ready for your surprise.....</h1>
+        
+        <div class="buttons" style="margin-top: 2rem;">
+            <a href="valentine.html" style="text-decoration: none;">
+                <button class="btn-yes" id="neutralYes">Yes</button>
+            </a>
+            <button class="btn-no" id="noBtn">No</button>
+        </div>
+    </div>
+
+    <!-- Canvas Confetti (needed for script.js execution, though not used here directly) -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
